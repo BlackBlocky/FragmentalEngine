@@ -3,4 +3,5 @@
 class Core {
     public:
         void echo();
+        void window();
 };

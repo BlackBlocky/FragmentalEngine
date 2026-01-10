@@ -6,8 +6,7 @@ int main() {
     
     Core core;
     core.echo();
-    
-    return 0; 
+    core.window();
 
-    
+    return 0; 
 }
