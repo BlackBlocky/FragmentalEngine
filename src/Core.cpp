@@ -2,28 +2,24 @@
 
 #include <iostream>
 
+#include <frag/Log.h>
+
 #include <GLFW/glfw3.h>
 
-void Core::echo() {
-    std::cout << "Echo!!\n"; 
-}
+namespace frag {
+    
+    void Core::initAndStart(std::string gameName, int pixelPerUnit, int ratioX, int ratioY, int sizeX, int sizeY) {
+        if (instanceIsRunning) {
 
-void Core::window() {
-    if (!glfwInit()) return;
+            return;
+        }
 
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API); // KEIN OpenGL
-
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Mein Fenster", nullptr, nullptr);
-    if (!window) {
-        glfwTerminate();
-        return;
+        instanceIsRunning = true;
     }
 
-    while (!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
-        // hier Software-Rendering / Vulkan etc.
+    int Core::initGLFWWindow() {
+        return 0;
     }
-
-    glfwDestroyWindow(window);
-    glfwTerminate();
+    
 }
+

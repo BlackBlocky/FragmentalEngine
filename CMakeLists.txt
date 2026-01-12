@@ -6,7 +6,7 @@ project(
     LANGUAGES CXX
 )
 
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
@@ -32,7 +32,7 @@ FetchContent_MakeAvailable(glfw)
 # Library
 # =========================
 
-add_library(FragmentalEngine STATIC src/Core.cpp)
+add_library(FragmentalEngine STATIC src/Core.cpp src/render/Renderer.cpp)
 target_include_directories(FragmentalEngine
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
