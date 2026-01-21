@@ -1,6 +1,7 @@
 #include <iostream>
 #include <frag/Core.h>
 #include <frag/Log.h>
+#include <frag/package/IPackage.h>
 
 #include <string>
 
@@ -8,8 +9,10 @@
 #include <thread>
 #include <chrono>
 
+#include "testPackage.h"
+
 int main() {
-    std::cout << "Heyyy\n" << sizeof(int) << " " << sizeof(std::mutex) << std::endl;
+    //std::cout << "Heyyy\n" << sizeof(int) << " " << sizeof(std::mutex) << std::endl;
 
 
     frag::Core core;
@@ -37,7 +40,13 @@ int main() {
         //std::cin >> lol;
     }
 
+    TestPackage testPackage;
+    testPackage.setupPackage();
+    std::cout << "Test: \n" << testPackage.getPackageAsString() << std::endl;
+
     //std::cin >> lol;
 
-    return 0; 
+    std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Giving the logger at least a chance to start the logging thread xD
+        
+    return 0;
 }

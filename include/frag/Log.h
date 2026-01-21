@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include <format>
 #include <iostream>
@@ -181,62 +183,62 @@ namespace frag {
     inline FragLogger fragLoggerInstance = FragLogger();
 
     template<typename... Args>
-    inline void log(std::string_view fmt, Args&&... args){
+    inline void log(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::INFO) {
             return;
         }
 
-        std::string result = std::vformat(std::string(fmt), std::make_format_args(args)...);     
+        std::string result = std::format(fmt, std::forward<Args>(args)...);     
         fragLoggerInstance.log(result, LogLevel::INFO);
     }
 
     template<typename... Args>
-    inline void logTrace(std::string_view fmt, Args&&... args){
+    inline void logTrace(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::TRACE) {
             return;
         }
 
-        std::string result = std::vformat(std::string(fmt), std::make_format_args(args)...);     
+        std::string result = std::format(fmt, std::forward<Args>(args)...);     
         fragLoggerInstance.log(result, LogLevel::TRACE);
     }
 
     template<typename... Args>
-    inline void logDebug(std::string_view fmt, Args&&... args){
+    inline void logDebug(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::DEBUG) {
             return;
         }
 
-        std::string result = std::vformat(std::string(fmt), std::make_format_args(args)...);     
+        std::string result = std::format(fmt, std::forward<Args>(args)...);     
         fragLoggerInstance.log(result, LogLevel::DEBUG);
     }
 
     template<typename... Args>
-    inline void logWarn(std::string_view fmt, Args&&... args){
+    inline void logWarn(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::WARNING) {
             return;
         }
-
-        std::string result = std::vformat(std::string(fmt), std::make_format_args(args)...);     
+        
+        std::string result = std::format(fmt, std::forward<Args>(args)...);     // geht nicht als string??!?!?!?!!??
         fragLoggerInstance.log(result, LogLevel::WARNING);
     }
 
     template<typename... Args>
-    inline void logError(std::string_view fmt, Args&&... args){
+    inline void logError(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::ERROR) {
             return;
         }
 
-        std::string result = std::vformat(std::string(fmt), std::make_format_args(args)...);     
+        std::string result = std::format(fmt, std::forward<Args>(args)...);     
         fragLoggerInstance.log(result, LogLevel::ERROR);
     }
 
     template<typename... Args>
-    inline void logFatal(std::string_view fmt, Args&&... args){
+    inline void logFatal(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::FATAL) {
             return;
         }
 
-        std::string result = std::vformat(std::string(fmt), std::make_format_args(args)...);     
+        std::string result = std::format(fmt, std::forward<Args>(args)...);     
         fragLoggerInstance.log(result, LogLevel::FATAL);
     }
 

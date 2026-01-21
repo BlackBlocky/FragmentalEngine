@@ -32,7 +32,7 @@ FetchContent_MakeAvailable(glfw)
 # Library
 # =========================
 
-add_library(FragmentalEngine STATIC src/Core.cpp src/render/Renderer.cpp)
+add_library(FragmentalEngine STATIC src/Core.cpp src/render/Renderer.cpp src/package/IPackage.cpp)
 target_include_directories(FragmentalEngine
         PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )

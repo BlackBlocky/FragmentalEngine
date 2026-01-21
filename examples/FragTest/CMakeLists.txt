@@ -20,5 +20,5 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../../ ${CMAKE_CURRENT_BINARY_DIR}/
 # Compile Stuff
 # =========================
 
-add_executable(FragTest main.cpp)
+add_executable(FragTest main.cpp testPackage.h)
 target_link_libraries(FragTest PRIVATE FragmentalEngine)
