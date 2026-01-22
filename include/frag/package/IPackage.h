@@ -8,6 +8,8 @@
 
 #include <filesystem>
 
+#include <functional>
+
 #include <frag/Log.h>
 
 namespace frag {
@@ -46,9 +48,9 @@ namespace frag {
                     logWarn("Package name is not set yet, cannot finish package.");
                     return;
                 }
-
-                packageAsString = toString();
+                
                 packageHash = 0;
+                packageAsString = toString();
                 packageIsSetup = true;
             }
 
@@ -63,11 +65,15 @@ namespace frag {
                     return;
                 }
 
-                packageName = std::string(name);
+                packageName = "p:" + std::string(name);
                 packageNameSet = true;
             }
             
-            void rGameState(std::string_view name) {};
+            void rGameState(std::string_view name) {
+                std::hash<std::string> stringHash;
+                std::string nameAsString = std::string(name);
+                registeredGameStates.insert({stringHash(nameAsString), nameAsString});
+            };
             void rAsset(int type, std::string_view name, std::filesystem::path assetPath) {};
 
             class IComponent;
@@ -127,11 +133,6 @@ namespace frag {
                 Includes Formatting
             */
             std::string toString() {
-                if (!packageIsSetup) {
-
-                    return "";
-                }
-
                 // Generate
                 std::stringstream ss;
                 ss << "Package: " << packageName << "\n";

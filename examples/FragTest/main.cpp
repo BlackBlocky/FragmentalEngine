@@ -23,7 +23,7 @@ int main() {
 
     std::string lol = "Hi {}";
     
-    frag::logTrace("Hello World! {}", 2);
+    frag::logTrace("Hello World! sdasdas {}", 2);
     frag::logDebug("Hello World! {}", 3);
     frag::log("Hello World! {}", 1);
     frag::logWarn("Hello World! {}", 5);
