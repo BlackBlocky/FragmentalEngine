@@ -21,8 +21,8 @@ int main() {
     frag::logging_enableColorWholeMessage(false);
     frag::logging_setLogLevel(frag::LogLevel::TRACE);
 
+    /*
     std::string lol = "Hi {}";
-    
     frag::logTrace("Hello World! sdasdas {}", 2);
     frag::logDebug("Hello World! {}", 3);
     frag::log("Hello World! {}", 1);
@@ -38,15 +38,18 @@ int main() {
         std::this_thread::sleep_for(std::chrono::milliseconds(1));
         i++;
         //std::cin >> lol;
-    }
+    }*/
 
-    TestPackage testPackage;
-    testPackage.setupPackage();
-    std::cout << "Test: \n" << testPackage.getPackageAsString() << std::endl;
+    //TestPackage testPackage;
+    //testPackage.setupPackage();
+    //std::cout << "Test: \n" << testPackage.getPackageAsString() << std::endl;
 
     //std::cin >> lol;
 
     std::this_thread::sleep_for(std::chrono::milliseconds(1)); // Giving the logger at least a chance to start the logging thread xD
         
+    core.setFrameMode(frag::FrameMode::VARIABLE, 60);
+    core.initAndStart("Frag Engine Test", 100, 16, 9, 1280);
+
     return 0;
 }

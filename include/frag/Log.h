@@ -183,7 +183,7 @@ namespace frag {
     inline FragLogger fragLoggerInstance = FragLogger();
 
     template<typename... Args>
-    inline void log(std::format_string<Args...> fmt, Args&&... args){
+    inline void logInfo(std::format_string<Args...> fmt, Args&&... args){
         if (fragLoggerInstance.logLevel < LogLevel::INFO) {
             return;
         }
